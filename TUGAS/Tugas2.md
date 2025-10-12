@@ -11,6 +11,9 @@
 4. Menampilkan Endpoint PUT (UPDATE)
 <img width="1920" height="1080" alt="Screenshot (438)" src="https://github.com/user-attachments/assets/3ca2720e-5792-45ee-8fcc-308b30c11e8c" />
 
-5. 
+5. Menampilkan Endpoint DELETE
+<img width="1920" height="1080" alt="Screenshot (439)" src="https://github.com/user-attachments/assets/34f55a86-84ee-49ea-9442-1263cae961bd" />
+
+
 
 
