@@ -8,4 +8,9 @@
 3. Menampilkan Endpoint GET By ID (READ)
 <img width="1920" height="1080" alt="Screenshot (437)" src="https://github.com/user-attachments/assets/0e5fcae5-61fa-4601-8355-71ac60464544" />
 
+4. Menampilkan Endpoint PUT (UPDATE)
+<img width="1920" height="1080" alt="Screenshot (438)" src="https://github.com/user-attachments/assets/3ca2720e-5792-45ee-8fcc-308b30c11e8c" />
+
+5. 
+
 
