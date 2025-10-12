@@ -1,5 +1,8 @@
 
-1. Menampilkan Api Endpoint CREATE
+1. Menampilkan Api Endpoint (CREATE)
 <img width="1920" height="1080" alt="Screenshot (435)" src="https://github.com/user-attachments/assets/3f741552-9b16-43a7-9c9f-1496e011168c" />
+
+2. Menampilkan Endpoint GETAll book (READ)
+<img width="1920" height="1080" alt="Screenshot (436)" src="https://github.com/user-attachments/assets/b3359840-6059-4527-bb18-4491f90c40ca" />
 
 
