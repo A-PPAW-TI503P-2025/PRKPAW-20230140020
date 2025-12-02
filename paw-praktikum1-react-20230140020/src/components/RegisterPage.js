@@ -27,7 +27,7 @@ function RegisterPage() {
         role: role
       });
 
-      navigate('/login'); // Setelah berhasil register
+      navigate('/login'); 
     } catch (err) {
       setError(err.response?.data?.message || 'Registrasi gagal. Silakan coba lagi.');
     }

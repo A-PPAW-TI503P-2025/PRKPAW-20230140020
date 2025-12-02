@@ -1,8 +1,12 @@
+require('dotenv').config({ path: __dirname + '/.env' });
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = 3001;
 const morgan = require("morgan");
+
+
 
 // Impor router
 const presensiRoutes = require("./routes/presensi");
@@ -10,6 +14,7 @@ const reportRoutes = require("./routes/reports");
 const authRoutes = require("./routes/auth");
 
 // Middleware
+
 	app.use(cors());
 	app.use(express.json());
 	app.use(morgan("dev"));
@@ -29,4 +34,6 @@ const ruteBuku = require("./routes/books");
 	app.use("/api/auth", authRoutes);
 	app.listen(PORT, () => {
 		console.log(`Express server running at http://localhost:${PORT}/`);
+		console.log("JWT_SECRET LOADED =", process.env.JWT_SECRET);
+
 	});

@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Import Link
 
 function LoginPage() {
-  // Switched from React.useState to the imported useState for standard practice
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [role] = React.useState("mahasiswa","admin");  
   const [error, setError] = React.useState("");
   const navigate = useNavigate();
 
@@ -16,16 +16,21 @@ function LoginPage() {
     try {
       const response = await axios.post('http://localhost:3001/api/auth/login', {
         email: email,
-        password: password
+        password: password,
+        role: role
       });
 
       const token = response.data.token;
       localStorage.setItem('token', token);
 
-      navigate('/dashboard');
+      if (role === 'admin') {
+                    
+          navigate('/dashboard'); 
+      } else {
+          navigate('/attendance'); 
+      }
 
     } catch (err) {
-      // Use optional chaining (?) for safer access to err.response
       setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
     }
   };
@@ -88,12 +93,23 @@ function LoginPage() {
           </button>
         </form>
 
-        {/* Error Message */}
+        {}
         {error && (
           <div className="mt-6 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm text-center">
             <p className="font-medium">{error}</p>
           </div>
         )}
+
+        {}
+        <p className="mt-6 text-center text-gray-600">
+          Belum punya akun? 
+          <Link 
+            to="/register" 
+            className="text-indigo-600 font-semibold ml-1 hover:text-indigo-800 transition duration-150"
+          >
+            Daftar di sini
+          </Link>
+        </p>
       </div>
     </div>
   );

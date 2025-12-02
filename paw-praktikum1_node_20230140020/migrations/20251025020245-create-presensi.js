@@ -11,12 +11,15 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      nama: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
+    
       checkIn: {
         allowNull: false,
         type: Sequelize.DATE
@@ -24,6 +27,14 @@ module.exports = {
       checkOut: {
         allowNull: true, // checkOut bisa kosong saat pertama kali check-in
         type: Sequelize.DATE
+      },
+      latitude: {
+        allowNull: false,
+        type: Sequelize.DECIMAL(10, 7)
+      },
+      longitude: {
+        allowNull: false,
+        type: Sequelize.DECIMAL(10, 7)
       },
       createdAt: {
         allowNull: false,
