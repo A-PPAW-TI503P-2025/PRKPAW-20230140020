@@ -4,17 +4,19 @@ const router = express.Router();
 const presensiController = require("../controllers/presensiController");
 const { authenticateToken, isAdmin } = require("../middleware/permissionMiddleware");
 
-// Semua route harus login
+// 1. Route Check-In
 router.use(authenticateToken);
 
-// User check-in / check-out
-router.post("/check-in", presensiController.CheckIn);
+router.post('/check-in', 
+    presensiController.upload.single('image'), 
+    presensiController.CheckIn
+);
+
+// 3. Route Check-Out
 router.post("/check-out", presensiController.CheckOut);
 
-// Admin bisa update presensi
+// 4. Update & Delete
 router.put("/:id", isAdmin, presensiController.updatePresensi);
-
-// User hanya bisa menghapus presensinya sendiri
 router.delete("/:id", presensiController.hapusPresensi);
 
 module.exports = router;

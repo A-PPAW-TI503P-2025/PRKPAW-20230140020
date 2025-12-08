@@ -39,6 +39,7 @@ function ReportPage() {
   useEffect(() => {
     fetchReports("");
   }, [navigate]);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     fetchReports(searchTerm);
@@ -78,6 +79,10 @@ function ReportPage() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Nama
                 </th>
+                {/* --- HEADER BARU: FOTO --- */}
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Bukti Foto
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Check-In
                 </th>
@@ -99,6 +104,32 @@ function ReportPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {presensi.user ? presensi.user.nama : "N/A"}
                     </td>
+
+                    {/* --- ISI BARU: MENAMPILKAN GAMBAR --- */}
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {presensi.buktiFoto ? (
+                        <div className="h-16 w-16 relative">
+                          <a 
+                            // Tambahin .replace(/\\/g, "/") di sini
+                            href={`http://localhost:3001/${presensi.buktiFoto}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            <img  
+                              className="h-16 w-16 rounded-md ..."
+                              // Dan DI SINI JUGA
+                              src={`http://localhost:3001/${presensi.buktiFoto}`}
+                              alt="Bukti Presensi"
+                            />
+                          </a>
+                        </div>
+                      ) : (
+                        <span className="text-xs text-gray-400 italic">
+                          Tidak ada foto
+                        </span>
+                      )}
+                    </td>
+
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {new Date(presensi.checkIn).toLocaleString("id-ID", {
                         timeZone: "Asia/Jakarta",
@@ -122,7 +153,7 @@ function ReportPage() {
               ) : (
                 <tr>
                   <td
-                    colSpan="3"
+                    colSpan="6" 
                     className="px-6 py-4 text-center text-gray-500"
                   >
                     Tidak ada data yang ditemukan.
