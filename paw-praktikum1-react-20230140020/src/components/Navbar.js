@@ -40,7 +40,6 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            {/* Logo tetap mengarah ke /dashboard, tapi user non-admin harus di-redirect di App.js */}
             <Link to="/dashboard" className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-md">
                 <span className="text-white font-bold text-lg">AP</span>
@@ -54,7 +53,7 @@ function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-3">
             
-            {/* MODIFIKASI 1: Tambahkan Kondisi untuk Dashboard (HANYA Admin) */}
+            {/* Menu Dashboard (Admin Only) */}
             {user.role === "admin" && (
               <Link
                 to="/dashboard"
@@ -66,6 +65,7 @@ function Navbar() {
               </Link>
             )}
 
+            {/* Menu Presensi (Semua User) */}
             <Link
               to="/attendance"
               className={`px-6 py-2.5 rounded-full font-medium transition-all ${
@@ -75,6 +75,7 @@ function Navbar() {
               Presensi
             </Link>
 
+            {/* Menu Laporan (Admin Only) */}
             {user.role === "admin" && (
               <Link
                 to="/reports"
@@ -85,9 +86,22 @@ function Navbar() {
                 Laporan Admin
               </Link>
             )}
+
+            {/* --- TAMBAHAN BARU: MONITORING SUHU (Desktop) --- */}
+            {user.role === "admin" && (
+              <Link
+                to="/monitoring"
+                className={`px-6 py-2.5 rounded-full font-medium transition-all ${
+                  isActive("/monitoring") ? activeClass : inactiveClass
+                }`}
+              >
+                Monitoring Suhu
+              </Link>
+            )}
+
           </div>
 
-          {/* Desktop User + Logout (Tidak berubah) */}
+          {/* Desktop User + Logout */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-md">
@@ -134,7 +148,6 @@ function Navbar() {
               </div>
             </div>
 
-            {/* MODIFIKASI 2: Tambahkan Kondisi untuk Dashboard (HANYA Admin) */}
             {user.role === "admin" && (
               <Link
                 to="/dashboard"
@@ -156,6 +169,7 @@ function Navbar() {
             >
               Presensi
             </Link>
+
             {user.role === "admin" && (
               <Link
                 to="/reports"
@@ -165,6 +179,19 @@ function Navbar() {
                 }`}
               >
                 Laporan Admin
+              </Link>
+            )}
+
+            {/* --- TAMBAHAN BARU: MONITORING SUHU (Mobile) --- */}
+            {user.role === "admin" && (
+              <Link
+                to="/monitoring"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-6 py-3 rounded-full font-medium ${
+                  isActive("/monitoring") ? activeClass : "text-gray-700"
+                }`}
+              >
+                Monitoring Suhu
               </Link>
             )}
 

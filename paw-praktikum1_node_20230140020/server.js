@@ -12,6 +12,9 @@ const path = require('path');
 const presensiRoutes = require("./routes/presensi");
 const reportRoutes = require("./routes/reports");
 const authRoutes = require("./routes/auth");
+const iotRoutes = require("./routes/iot");
+
+
 
  
 
@@ -37,6 +40,9 @@ const ruteBuku = require("./routes/books");
 	app.use("/api/presensi", presensiRoutes);
 	app.use("/api/reports", reportRoutes);
 	app.use("/api/auth", authRoutes);
+	app.use("/api/iot", iotRoutes);
+
+
 	app.listen(PORT, () => {
 		console.log(`Express server running at http://localhost:${PORT}/`);
 		console.log("JWT_SECRET LOADED =", process.env.JWT_SECRET);
